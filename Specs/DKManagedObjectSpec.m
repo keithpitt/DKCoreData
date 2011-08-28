@@ -184,7 +184,26 @@ describe(@"DKManagedObject", ^{
                                                                 [NSNumber numberWithInt:12], @"identifier",
                                                                 nil]];
             
-            expect([user performSelector:@selector(formData:valueForKey:) withObject:nil withObject:nil]).toEqual(user.identifier);
+            expect([user performSelector:@selector(formData:valueForParameter:) withObject:nil withObject:nil]).toEqual(user.identifier);
+            
+        });
+        
+    });
+    
+    context(@"- (NSString *)formData:(DKAPIFormData *)formData parameterForKey:(NSString *)key", ^{
+        
+        it(@"should return the key with an _id appended", ^{
+            
+            FGSpecUser * user = [FGSpecUser buildWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                 @"me@keithpitt.com", @"email",
+                                                                 [NSNumber numberWithInt:12], @"identifier",
+                                                                 nil]];
+            
+            
+            
+            expect([user performSelector:@selector(formData:parameterForKey:) withObject:@"something"]).toEqual(@"something_id");
+            expect([user performSelector:@selector(formData:parameterForKey:) withObject:@"something[foo]"]).toEqual(@"something[foo_id]");
+            expect([user performSelector:@selector(formData:parameterForKey:) withObject:@"something[foo][bar]"]).toEqual(@"something[foo][bar_id]");
             
         });
         
