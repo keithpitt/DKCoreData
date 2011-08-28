@@ -62,7 +62,36 @@ describe(@"DKDataImporter", ^{
         
     });
     
+    it(@"should update the correct records during import", ^{
+        
+        NSArray * usersWithNameKeithPitt = [DKFile jsonFromBundle:nil pathForResource:@"UsersWithNameKeithPitt"];
+        NSArray * usersWithNameKeithPitty = [DKFile jsonFromBundle:nil pathForResource:@"UsersWithNameKeithPitty"];
+        
+        [DKCoreDataImporter import:^(DKCoreDataImporter * importer) {
+            
+            // First round of importing creates new users
+            [importer import:usersWithNameKeithPitt];
+            
+            FGSpecUser * user = [FGSpecUser find:[NSNumber numberWithInt:5]];
+            
+            NSManagedObjectID * userID = user.objectID;
+            
+            [importer import:usersWithNameKeithPitty];
+            
+            FGSpecUser * updatedUser = [FGSpecUser find:[NSNumber numberWithInt:5]];
+            
+            expect(updatedUser.lastName).toEqual(@"Pitty");
+            expect(updatedUser.identifier).toEqual(user.identifier);
+            expect(updatedUser.objectID).toEqual(userID);
+            
+        } background:NO];        
+        
+        
+    });
+
     it(@"should import an odd number of records", ^{
+        
+        [FGSpecUser destroyAll];
         
         NSArray * oddNumberOfUsers = [DKFile jsonFromBundle:nil pathForResource:@"OddNumberOfUsers"];
         

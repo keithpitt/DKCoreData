@@ -233,7 +233,12 @@
     // Place holder for inserting new record boolean
     BOOL newRecord = YES;
     
-    for (NSDictionary * record in data) {
+    // Sort the data via the primary key
+    NSMutableArray * sortedData = [data mutableCopy];
+    
+    [sortedData sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES] autorelease]]];
+    
+    for (NSDictionary * record in sortedData) {
         
         if (index % loopLimit == 0) {
             
