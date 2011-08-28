@@ -37,8 +37,12 @@
 + (id)buildInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     
     // Build in a paticular object context
-    return [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
-                                         inManagedObjectContext:managedObjectContext];
+    DKManagedObject * managedObject = [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
+                                                                    inManagedObjectContext:managedObjectContext];    
+    // Call the afterInsert callback
+    [managedObject afterInsert];
+    
+    return managedObject;
     
 }
 
@@ -404,6 +408,12 @@
 }
 
 - (void)afterImport {
+    
+    // Do nothing. This can be overridden by sub classes.
+    
+}
+
+- (void)afterInsert {
     
     // Do nothing. This can be overridden by sub classes.
     
