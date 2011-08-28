@@ -388,6 +388,12 @@
     
 }
 
+- (id)formData:(DKAPIFormData *)formData valueForKey:(NSString *)key {
+    
+    return [self valueForKey:[[self class] primaryKey]];
+    
+}
+
 - (void)afterImport {
     
     // Do nothing. This can be overridden by sub classes.

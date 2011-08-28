@@ -175,6 +175,21 @@ describe(@"DKManagedObject", ^{
         
     });
     
+    describe(@"- (id)formData:(DKAPIFormData *)formData valueForKey:(NSString *)key", ^{
+        
+        it(@"should return the primary key", ^{
+            
+            FGSpecUser *user = [FGSpecUser buildWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                @"me@keithpitt.com", @"email",
+                                                                [NSNumber numberWithInt:12], @"identifier",
+                                                                nil]];
+            
+            expect([user performSelector:@selector(formData:valueForKey:) withObject:nil withObject:nil]).toEqual(user.identifier);
+            
+        });
+        
+    });
+    
 });
 
 SPEC_END

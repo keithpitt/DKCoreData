@@ -11,6 +11,8 @@
 
 #import "DKCoreDataQuery.h"
 
+@class DKAPIFormData;
+
 @interface DKManagedObject : NSManagedObject
 
 + (NSString *)primaryKey;
