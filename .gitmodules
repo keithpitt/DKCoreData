@@ -4,3 +4,6 @@
 [submodule "External/DKFile"]
 	path = External/DKFile
 	url = git@github.com:keithpitt/DKFile
+[submodule "External/DKPredicateBuilder"]
+	path = External/DKPredicateBuilder
+	url = git@github.com:keithpitt/DKPredicateBuilder.git

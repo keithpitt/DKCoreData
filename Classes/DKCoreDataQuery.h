@@ -24,6 +24,8 @@
 
 @property (nonatomic, retain) NSString * entity;
 @property (nonatomic, retain) NSManagedObjectContext * managedObjectContext;
+@property (nonatomic, retain) NSNumber * batchSize;
+@property (nonatomic, retain) NSMutableArray * columns;
 
 - (id)initWithEntity:(NSString *)entityName;
 
@@ -37,6 +39,8 @@
 
 - (DKManagedObject *)firstObject;
 - (DKManagedObject *)lastObject;
+
+- (id)only:(NSString *)column;
 
 - (id)batchSize:(int)value;
 

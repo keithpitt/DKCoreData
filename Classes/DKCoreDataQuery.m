@@ -10,11 +10,24 @@
 
 @implementation DKCoreDataQuery
 
-@synthesize entity, managedObjectContext;
+@synthesize entity, managedObjectContext, batchSize, columns;
+
+- (id)init {
+    
+    if ((self = [super init])) {
+        
+        // Create the columns mutable array
+        columns = [[NSMutableArray alloc] init];
+        
+    }
+    
+    return self;
+    
+}
 
 - (id)initWithEntity:(NSString *)entityName {
 
-    if ((self = [super init])) {
+    if ((self = [self init])) {
         
         // Copy the entity
         self.entity = entityName;
@@ -132,6 +145,14 @@
     
 }
 
+- (id)only:(NSString *)column {
+    
+    [self.columns addObject:column];
+    
+    return self;
+    
+}
+
 - (id)batchSize:(int)value {
     
     // Set the batch size
@@ -172,8 +193,10 @@
 - (void)dealloc {
     
     [managedObjectContext release];
-    
     [entity release];
+    
+    [columns release];
+    [batchSize release];
     
     [super dealloc];
     
