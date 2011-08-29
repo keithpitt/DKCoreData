@@ -38,4 +38,6 @@
 - (DKManagedObject *)firstObject;
 - (DKManagedObject *)lastObject;
 
+- (id)batchSize:(int)value;
+
 @end

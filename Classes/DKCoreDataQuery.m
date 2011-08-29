@@ -132,6 +132,15 @@
     
 }
 
+- (id)batchSize:(int)value {
+    
+    // Set the batch size
+    self.batchSize = [NSNumber numberWithInt:value];
+    
+    return self;
+    
+}
+
 - (DKManagedObject *)firstObject {
     
     // TODO: some sort of results caching here
