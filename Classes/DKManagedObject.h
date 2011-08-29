@@ -45,5 +45,6 @@
 - (NSDictionary *)serializeWithAssociations:(BOOL)includeAssociations andIncludeRoot:(BOOL)includeRoot;
 
 - (void)afterImport;
+- (void)afterInsert;
 
 @end
