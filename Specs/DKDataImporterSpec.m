@@ -11,6 +11,8 @@
 #import "DKCoreDataImporter.h"
 
 #import "DKFile.h"
+#import "DKFile+JSON.h"
+
 #import "FGSpecImportableUser.h"
 
 #import "FGSpecUser.h"
