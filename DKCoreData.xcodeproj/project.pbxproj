@@ -59,10 +59,11 @@
 		53FFD00014011C1000E6B764 /* DKFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FFCFFF14011C1000E6B764 /* DKFile.m */; };
 		53FFD00214011C1F00E6B764 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FFD00114011C1F00E6B764 /* libicucore.dylib */; };
 		53FFD00514011C8200E6B764 /* Specs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53FFD00314011C8200E6B764 /* Specs.xcdatamodeld */; };
+		78AB61AB141764C500C449EE /* ProfileWithUserAndComments.json in Resources */ = {isa = PBXBuildFile; fileRef = 78AB61AA141764C500C449EE /* ProfileWithUserAndComments.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5304AF7D140A80FB00DF687E /* UsersWithNameKeithPitty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UsersWithNameKeithPitty.json; sourceTree = "<group>"; };
+		5304AF7D140A80FB00DF687E /* UsersWithNameKeithPitty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UsersWithNameKeithPitty.json; sourceTree = "<group>"; };
 		53247F84140B485800C33061 /* DKPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKPredicate.h; path = DKPredicateBuilder/Classes/DKPredicate.h; sourceTree = "<group>"; };
 		53247F85140B485800C33061 /* DKPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKPredicate.m; path = DKPredicateBuilder/Classes/DKPredicate.m; sourceTree = "<group>"; };
 		53247F86140B485800C33061 /* DKPredicateBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DKPredicateBuilder.h; path = DKPredicateBuilder/Classes/DKPredicateBuilder.h; sourceTree = "<group>"; };
@@ -75,13 +76,13 @@
 		5348724B14011996003522DA /* DKCoreDataQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCoreDataQuery.m; sourceTree = "<group>"; };
 		5348724C14011996003522DA /* DKManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKManagedObject.h; sourceTree = "<group>"; };
 		5348724D14011996003522DA /* DKManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKManagedObject.m; sourceTree = "<group>"; };
-		53487254140119AB003522DA /* ImportableUsers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ImportableUsers.json; sourceTree = "<group>"; };
-		53487255140119AB003522DA /* InvalidCafesFormat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InvalidCafesFormat.json; sourceTree = "<group>"; };
-		53487256140119AB003522DA /* NonExistantModel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NonExistantModel.json; sourceTree = "<group>"; };
-		53487257140119AB003522DA /* OddNumberOfUsers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OddNumberOfUsers.json; sourceTree = "<group>"; };
-		53487258140119AB003522DA /* UsersWithComments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UsersWithComments.json; sourceTree = "<group>"; };
-		53487259140119AB003522DA /* UsersWithNameKeithPitt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UsersWithNameKeithPitt.json; sourceTree = "<group>"; };
-		5348725A140119AB003522DA /* UsersWithNoIdentifiers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UsersWithNoIdentifiers.json; sourceTree = "<group>"; };
+		53487254140119AB003522DA /* ImportableUsers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ImportableUsers.json; sourceTree = "<group>"; };
+		53487255140119AB003522DA /* InvalidCafesFormat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InvalidCafesFormat.json; sourceTree = "<group>"; };
+		53487256140119AB003522DA /* NonExistantModel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NonExistantModel.json; sourceTree = "<group>"; };
+		53487257140119AB003522DA /* OddNumberOfUsers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OddNumberOfUsers.json; sourceTree = "<group>"; };
+		53487258140119AB003522DA /* UsersWithComments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UsersWithComments.json; sourceTree = "<group>"; };
+		53487259140119AB003522DA /* UsersWithNameKeithPitt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UsersWithNameKeithPitt.json; sourceTree = "<group>"; };
+		5348725A140119AB003522DA /* UsersWithNoIdentifiers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UsersWithNoIdentifiers.json; sourceTree = "<group>"; };
 		5348725B140119AB003522DA /* DKCoreDataQuerySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCoreDataQuerySpec.m; sourceTree = "<group>"; };
 		5348725C140119AB003522DA /* DKDataImporterSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKDataImporterSpec.m; sourceTree = "<group>"; };
 		5348725D140119AB003522DA /* DKManagedObjectSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKManagedObjectSpec.m; sourceTree = "<group>"; };
@@ -168,6 +169,7 @@
 		53FFCFFF14011C1000E6B764 /* DKFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DKFile.m; path = DKFile/Classes/DKFile.m; sourceTree = "<group>"; };
 		53FFD00114011C1F00E6B764 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		53FFD00414011C8200E6B764 /* Specs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Specs.xcdatamodel; sourceTree = "<group>"; };
+		78AB61AA141764C500C449EE /* ProfileWithUserAndComments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ProfileWithUserAndComments.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				53487259140119AB003522DA /* UsersWithNameKeithPitt.json */,
 				5304AF7D140A80FB00DF687E /* UsersWithNameKeithPitty.json */,
 				5348725A140119AB003522DA /* UsersWithNoIdentifiers.json */,
+				78AB61AA141764C500C449EE /* ProfileWithUserAndComments.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				53487270140119AB003522DA /* UsersWithNameKeithPitt.json in Resources */,
 				53487271140119AB003522DA /* UsersWithNoIdentifiers.json in Resources */,
 				5304AF7E140A80FB00DF687E /* UsersWithNameKeithPitty.json in Resources */,
+				78AB61AB141764C500C449EE /* ProfileWithUserAndComments.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
