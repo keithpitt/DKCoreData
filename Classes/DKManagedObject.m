@@ -322,7 +322,7 @@
             NSEntityDescription * destination = [relationshipDescription destinationEntity];
             
             // Create the association class
-            Class assocaitionClass = NSClassFromString([destination managedObjectClassName]);
+            Class associationClass = NSClassFromString([destination managedObjectClassName]);
             
             if ([relationshipDescription isToMany]) {
                 
@@ -333,13 +333,13 @@
                 for (NSDictionary * jsonData in associations) {
                     
                     // The data for the association.
-                    NSDictionary * associationData = [jsonData objectForKey:[[assocaitionClass entityName] lowercaseString]];
+                    NSDictionary * associationData = [jsonData objectForKey:[[associationClass entityName] lowercaseString]];
                     
                     // Grab the ID and convert it an NSNumber
                     NSNumber * identifier = [NSNumber numberWithString:[associationData objectForKey:@"id"]];
                     
                     // Find or build the assocaition
-                    DKManagedObject * record = [assocaitionClass findOrBuildBy:[assocaitionClass primaryKey] value:identifier managedObjectContext:[self managedObjectContext]];
+                    DKManagedObject * record = [associationClass findOrBuildBy:[associationClass primaryKey] value:identifier managedObjectContext:[self managedObjectContext]];
                     [record updateAttributes:associationData];
                     
                     [records addObject:record];
@@ -358,7 +358,7 @@
                 NSNumber * identifier = [NSNumber numberWithString:[associationData objectForKey:@"id"]];
                 
                 // Find or build the assocaition
-                DKManagedObject * record = [assocaitionClass findOrBuildBy:[assocaitionClass primaryKey] value:identifier managedObjectContext:[self managedObjectContext]];
+                DKManagedObject * record = [associationClass findOrBuildBy:[associationClass primaryKey] value:identifier managedObjectContext:[self managedObjectContext]];
                 [record updateAttributes:associationData];
                 
                 // Set the association back to the base record
