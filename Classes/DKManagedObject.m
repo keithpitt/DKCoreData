@@ -332,8 +332,10 @@
                 
                 for (NSDictionary * jsonData in associations) {
                     
-                    // The data for the association.
-                    NSDictionary * associationData = [jsonData objectForKey:[[associationClass entityName] lowercaseString]];
+                    // The data for the association
+                    // Converts the associationClass into a string identifier - EG: LineItem becomes a key of "line_item"
+                    // Therefore, hash data should look like {"line_items" => {"line_item" => {"attribute" => "value"}}}
+                    NSDictionary * associationData = [jsonData objectForKey:[[associationClass entityName] underscore]];
                     
                     // Grab the ID and convert it an NSNumber
                     NSNumber * identifier = [NSNumber numberWithString:[associationData objectForKey:@"id"]];
@@ -351,7 +353,7 @@
                 
             } else {
                 
-                // The data for the association.
+                // The data for the association
                 NSDictionary * associationData = [data objectForKey:jsonKey];
                 
                 // Grab the ID and convert it an NSNumber
