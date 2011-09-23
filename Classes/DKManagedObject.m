@@ -114,14 +114,21 @@
     
 }
 
-+ (void)destroyAll {
+// Delete all records for this Object that match the provided DKCoreDataQuery
++ (void)destroyAllUsingQuery:(DKCoreDataQuery *)query {
     
-    NSArray *records = [[self query] results];
+    NSArray *records = [query results];
     
     for (int i = 0, l = [records count]; i < l; i++)
         [[records objectAtIndex:i] destroy];
     
     [[DKCoreData shared] saveManagedObjectContext];
+}
+
+// Deletes all records for this Object
++ (void)destroyAll {
+    
+    [self destroyAllUsingQuery:[self query]];
     
 }
 
