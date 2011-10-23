@@ -102,6 +102,40 @@ describe(@"DKManagedObject", ^{
         
     });
     
+    describe(@"- (void)updateAttributes:(NSDictionary*)data", ^{
+        
+        it(@"should create 1-1 relationships (from a number in the _id column)", ^{
+            
+            FGSpecUser * user = [FGSpecUser buildWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                 @"me@keithpitt.com", @"email",
+                                                                 [NSNumber numberWithInt:55], @"identifier",
+                                                                 [NSNumber numberWithBool:YES], @"active",
+                                                                 nil]];
+            FGSpecComment * comment = [FGSpecComment build];
+            [comment updateAttributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:55] forKey:@"user_id"]];
+            
+            expect([comment user]).toEqual(user);
+            
+            
+        });
+        
+        it(@"should create 1-1 relationships (from a string in the _id column)", ^{
+            
+            FGSpecUser * user = [FGSpecUser buildWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                 @"me@keithpitt.com", @"email",
+                                                                 [NSNumber numberWithInt:55], @"identifier",
+                                                                 [NSNumber numberWithBool:YES], @"active",
+                                                                 nil]];
+            FGSpecComment * comment = [FGSpecComment build];
+            [comment updateAttributes:[NSDictionary dictionaryWithObject:@"55" forKey:@"user_id"]];
+            
+            expect([comment user]).toEqual(user);
+            
+            
+        });
+        
+    });
+    
     describe(@"-serialize", ^{
         
         it(@"should return a JSON representation of the object", ^{

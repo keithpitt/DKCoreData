@@ -315,11 +315,6 @@
         if ([[property name] isEqualToString:[[self class] primaryKey]]) {
             jsonKey = @"id";
         }
-      
-        // If the value is nil or null, skip it aswell
-        if ([data objectForKey:jsonKey] == nil || [data objectForKey:jsonKey] == [NSNull null]) {
-            continue;
-        }
         
         // If it's a relationship, handle it appropriately.
         if ([property isKindOfClass:[NSRelationshipDescription class]]) {
@@ -335,48 +330,70 @@
                 
                 // The data for the association.
                 NSArray * associations = [data objectForKey:jsonKey];
-                NSMutableArray * records = [NSMutableArray array];
                 
-                for (NSDictionary * jsonData in associations) {
+                if (associations) {
                     
-                    // The data for the association
-                    // Converts the associationClass into a string identifier - EG: LineItem becomes a key of "line_item"
-                    // Therefore, hash data should look like {"line_items" => {"line_item" => {"attribute" => "value"}}}
-                    NSDictionary * associationData = [jsonData objectForKey:[[associationClass entityName] underscore]];
+                    NSMutableArray * records = [NSMutableArray array];
                     
-                    // Grab the ID and convert it an NSNumber
-                    NSNumber * identifier = [NSNumber numberWithString:[associationData objectForKey:@"id"]];
+                    for (NSDictionary * jsonData in associations) {
+                        
+                        // The data for the association
+                        // Converts the associationClass into a string identifier - EG: LineItem becomes a key of "line_item"
+                        // Therefore, hash data should look like {"line_items" => {"line_item" => {"attribute" => "value"}}}
+                        NSDictionary * associationData = [jsonData objectForKey:[[associationClass entityName] underscore]];
+                        
+                        // Grab the ID and convert it an NSNumber
+                        NSNumber * identifier = [NSNumber numberWithString:[associationData objectForKey:@"id"]];
+                        
+                        // Find or build the assocaition
+                        DKManagedObject * record = [associationClass findOrBuildBy:[associationClass primaryKey] value:identifier managedObjectContext:[self managedObjectContext]];
+                        [record updateAttributes:associationData];
+                        
+                        [records addObject:record];
+                        
+                    }
+                    
+                    // Set the association back to the base record
+                    [self setValue:[NSSet setWithArray:records] forKey:[propertyDescription name]];
+                    
+                }
+                
+            } else {
+                
+                NSNumber * identifier = nil;
+                
+                // Is there a reference to the association id
+                id associationId = [data objectForKey:[NSString stringWithFormat:@"%@_id", jsonKey]];
+                
+                // The data for the association
+                NSDictionary * associationData = [data objectForKey:jsonKey];
+
+                // Switch between looking at the _id and the embedded association if there is one
+                if (associationId)
+                    identifier = [NSNumber numberWithString:associationId];
+                else if (associationData)
+                    identifier = [NSNumber numberWithString:[associationData objectForKey:@"id"]];
+                
+                if (identifier) {
                     
                     // Find or build the assocaition
                     DKManagedObject * record = [associationClass findOrBuildBy:[associationClass primaryKey] value:identifier managedObjectContext:[self managedObjectContext]];
                     [record updateAttributes:associationData];
                     
-                    [records addObject:record];
+                    // Set the association back to the base record
+                    [self setValue:record forKey:[propertyDescription name]];
                     
                 }
-                
-                // Set the association back to the base record
-                [self setValue:[NSSet setWithArray:records] forKey:[propertyDescription name]];
-                
-            } else {
-                
-                // The data for the association
-                NSDictionary * associationData = [data objectForKey:jsonKey];
-                
-                // Grab the ID and convert it an NSNumber
-                NSNumber * identifier = [NSNumber numberWithString:[associationData objectForKey:@"id"]];
-                
-                // Find or build the assocaition
-                DKManagedObject * record = [associationClass findOrBuildBy:[associationClass primaryKey] value:identifier managedObjectContext:[self managedObjectContext]];
-                [record updateAttributes:associationData];
-                
-                // Set the association back to the base record
-                [self setValue:record forKey:[propertyDescription name]];
                 
             }
             
             continue;
             
+        }
+        
+        // If the value is nil or null, skip it aswell
+        if ([data objectForKey:jsonKey] == nil || [data objectForKey:jsonKey] == [NSNull null]) {
+            continue;
         }
         
         NSAttributeDescription * attributeDescription = property;            
