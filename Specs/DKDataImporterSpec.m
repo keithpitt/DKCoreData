@@ -15,6 +15,7 @@
 
 #import "FGSpecImportableUser.h"
 
+#import "FGSpecProfile.h"
 #import "FGSpecUser.h"
 #import "FGSpecComment.h"
 
@@ -194,6 +195,33 @@ describe(@"DKDataImporter", ^{
             
             int commentsCount = [[FGSpecComment query] count];
             expect(commentsCount).toEqual(200);
+            
+        } background:NO];
+        
+    });
+  
+    it(@"should import nested has many relationships", ^{
+       
+        [FGSpecProfile destroyAll];
+        [FGSpecUser destroyAll];
+        [FGSpecComment destroyAll];
+        
+        NSArray * profileWithUserAndComments = [DKFile jsonFromBundle:nil pathForResource:@"ProfileWithUserAndComments"];
+        
+        [DKCoreDataImporter import:^(DKCoreDataImporter * importer) {
+            
+            expect([importer import:profileWithUserAndComments]).toBeTruthy();
+            
+        } completion: ^{
+            
+            int profileCount = [[FGSpecProfile query] count];
+            expect(profileCount).toEqual(1);
+            
+            int usersCount = [[FGSpecUser query] count];
+            expect(usersCount).toEqual(1);
+            
+            int commentsCount = [[FGSpecComment query] count];
+            expect(commentsCount).toEqual(2);
             
         } background:NO];
         

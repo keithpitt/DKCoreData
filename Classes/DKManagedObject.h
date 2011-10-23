@@ -26,6 +26,7 @@
 + (NSDictionary*)lookupSynchronizationObject:(NSDictionary *)data;
 + (void)synchronizeFromJSON:(NSArray *)data;
 
++ (void)destroyAllUsingQuery:(DKCoreDataQuery *)query;
 + (void)destroyAll;
 
 + (id)find:(NSNumber *)identifier;
