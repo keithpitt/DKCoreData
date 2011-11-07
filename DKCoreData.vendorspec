@@ -1,15 +1,17 @@
 Vendor::Spec.new do |s|
 
-  s.name        = "DKCoreData"
-  s.version     = "0.1"
+  s.name        "DKCoreData"
+  s.version     "0.1.1"
 
-  s.authors     = "keithpitt"
-  s.email       = "me@keithpitt.com"
-  s.description = "A set of classes that make it easy to work with the Core Data framework on iOS and OSX"
+  s.authors     "keithpitt"
+  s.email       "me@keithpitt.com"
+  s.description "A set of classes that make it easy to work with the Core Data framework on iOS and OSX"
 
-  s.source      = "https://github.com/keithpitt/DKCoreData"
+  s.source      "https://github.com/keithpitt/DKCoreData"
 
-  s.files       = `git ls-files Classes`.split("\n")
+  s.files       `git ls-files Classes`.split("\n")
+
+  s.framework   "CoreData.framework"
 
   s.dependency  "DKFile", "0.1"
   s.dependency  "DKPredicateBuilder", "0.1"
